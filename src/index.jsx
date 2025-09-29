@@ -1,4 +1,11 @@
-// TODO make a reactive model, set it to window.myModel
-import {createRoot} from "react-dom/client";
-createRoot(document.getElementById('root'))
-    .render(<div>hello world!</div>);  
+import { createRoot } from "react-dom/client";
+import { observable, configure, reaction } from "mobx";
+import { App } from "./App";
+import { movieModel} from "./JS/movieModel.js";
+import { connectToPersistence } from "./JS/firestoreModel.js";
+configure({enforceActions:"never"})
+
+const reactiveModel = observable(movieModel);
+
+connectToPersistence(reactiveModel, reaction)
+createRoot(document.getElementById('root')).render(<App model={reactiveModel} />);  
