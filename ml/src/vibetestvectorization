@@ -1,0 +1,88 @@
+import pandas as pd
+import numpy as np
+from sentence_transformers import SentenceTransformer
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+
+# -----------------------------
+# 1. Load Wikipedia metadata and plots
+# -----------------------------
+metadata = pd.read_csv("movie.metadata.tsv", sep="\t", header=None, low_memory=False)
+metadata = metadata[[0, 2]]  
+metadata.columns = ["wiki_id", "title"]
+
+plots = {}
+with open("plot_summaries.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        wiki_id, plot = line.strip().split("\t", 1)
+        plots[int(wiki_id)] = plot
+
+data = []
+for idx, row in metadata.iterrows():
+    wiki_id = int(row["wiki_id"])
+    if wiki_id in plots:
+        data.append({
+            "title": row["title"],
+            "plot": plots[wiki_id]
+        })
+
+df = pd.DataFrame(data)
+df = df.head(1000)  
+
+# -----------------------------
+# 2. Load models
+# -----------------------------
+sbert_model = SentenceTransformer("all-mpnet-base-v2")
+
+vad_model_name = "RobroKools/vad-bert"
+vad_tokenizer = AutoTokenizer.from_pretrained(vad_model_name)
+vad_model = AutoModelForSequenceClassification.from_pretrained(vad_model_name)
+
+def get_vad(text):
+    inputs = vad_tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+    with torch.no_grad():
+        logits = vad_model(**inputs).logits.squeeze().tolist()
+    return np.array(logits)[:2]  # drop Dominance if desired
+
+# -----------------------------
+# 3. Preprocessing functions
+# -----------------------------
+def preprocess_text(text):
+    return str(text).lower().strip()
+
+def chunk_text(text, chunk_size=300):
+    """Split text into chunks of ~chunk_size words."""
+    words = text.split()
+    chunks = [' '.join(words[i:i+chunk_size]) for i in range(0, len(words), chunk_size)]
+    return chunks
+
+# -----------------------------
+# 4. Storage dictionaries
+# -----------------------------
+semantic_vectors = {}
+vad_vectors = {}
+
+# -----------------------------
+# 5. Process first 100 movies
+# -----------------------------
+for idx, row in df.iterrows():
+    title = row['title']
+    plot = preprocess_text(row['plot'])
+
+    # --- Semantic ---
+    semantic_vec = sbert_model.encode(plot)
+    semantic_vectors[title] = semantic_vec
+
+    # --- VAD ---
+    chunks = chunk_text(plot)
+    vad_chunk_vecs = [get_vad(c) for c in chunks]
+    vad_vec = np.mean(vad_chunk_vecs, axis=0)
+    vad_vectors[title] = vad_vec
+
+# -----------------------------
+# 6. Save vectors
+# -----------------------------
+np.save("semantic_vectors_100.npy", semantic_vectors)
+np.save("vad_vectors_100.npy", vad_vectors)
+
+print("Vectors created and saved for 100 movies.")
