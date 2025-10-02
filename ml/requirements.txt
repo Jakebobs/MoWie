@@ -1,0 +1,6 @@
+pandas
+numpy
+sentence_transformers
+transformers
+torch
+datasets
