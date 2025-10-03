@@ -24,3 +24,4 @@ The project should now be available locally! It should be served on port 8080.
 ### Firebase credentials
 ### Routing
 ### Template pages
+### JustWatch API or "Knockoff"

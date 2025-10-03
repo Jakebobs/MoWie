@@ -15,4 +15,5 @@ window.db= db
 const COLLECTION="MoWie";
 
 export function connectToPersistence(){
+    //TODO, WHAT DO WE WANT TO SAVE?
 }
