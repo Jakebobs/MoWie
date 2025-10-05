@@ -29,10 +29,7 @@ def query_n_best_matches():
     text = data.get("text", "")  # här ligger användarens query
     result = find_n_best_matches(N, [text, ""], database, model)[0]
     return jsonify(
-        [
-            {"name": result[0], "year": result[1], "imdb_id": result[2]}
-            for match in result
-        ]
+        [{"name": match[0], "year": match[1], "imdb_id": match[2]} for match in result]
     )
 
 
