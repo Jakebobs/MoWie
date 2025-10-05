@@ -17,8 +17,7 @@ const Home = observer(
 					body: JSON.stringify({ text: props.model.query }),
 				});
 				const data = await response.json();
-				// Store the result in your model or handle it as needed
-				// For example: props.model.setResult(data.result);
+				props.model.setResult(data.result)
 				console.log('Result:', data.result);
 			} catch (error) {
 				console.error('Error calling Python API:', error);
@@ -29,6 +28,7 @@ const Home = observer(
 		return (
 			<div>
 				<HomePage model={props.model}
+						  result = {props.model.result}
 						  onSubmit={queryACB}
 						  onSetQuery={setQueryACB}/>
 			</div>

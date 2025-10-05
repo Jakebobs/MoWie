@@ -24,4 +24,5 @@ The project should now be available locally! It should be served on port 8080.
 ### Firebase credentials
 ### Routing
 ### Template pages
-### JustWatch API or "Knockoff"
+### JustWatch API or "streaming-availability/movieofthenight" for where to watch
+### OMDBapi for free ratings

@@ -25,7 +25,14 @@ export function HomePage(props) {
                      <div className="guess-window">
                             <input type="text" placeholder="Write your query here" onChange={setQueryACB} onKeyDown={handleEnterPressACB} />
                             <button onClick={submitACB}>Submit!</button>
-                        </div>
+                    </div>
+                    {
+                        props.result===0
+                        ? <h3>No result</h3>
+                        : <div>
+                            <h3> We recommend: {props.result}</h3>
+                          </div>
+                        }
                 </center>
             </div>
         </div>
