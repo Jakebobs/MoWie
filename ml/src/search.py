@@ -27,13 +27,15 @@ def find_best_matches(
 
 if __name__ == "__main__":
     queries = [
-        "A thrilling and awe-inspiring space movie with time travel and big ideas and a lot of emotion. Betrayal, sacrifice, love.",
-        "A movie questioning the nature of reality. The protagonist goes up against a seemingly insurmountable force, but somehow prevails. Hopeful.",
-        "A movie about a character selflessly making unthinkable sacrifices to achieve a higher goal.",
-        "A movie about a character selflessly making unthinkable sacrifices to achieve a higher goal. The fate of the universe is at stake.",
-        "A dark movie where evil wins. All hope is lost. Gloomy.",
-        "A movie about an underdog overcoming obstacles and succeeding in the face of adversity. I want to get really warm and fuzzy inside.",
-        "An inspirational movie where a character is tested but does not violate his principles. The ends do not justify the means.",
+        "Dark gritty horror movie with gruesome death",
+        "Horror movie",
+        "Extremely scary movie",
+        "Sci-fi mystery dark fairy tale",
+        "movie with a vibe of Peaky Blinders or Money Heist",
+        "I am very tired and my brain is tired so suggest me something that is lightweight or doesnt require using brain/not think",
+        "Happy/sad etc",
+        "I want a Rom-Com movie",
+        "We want cozy",
     ]
     database = pd.read_pickle(c.DATABASE_PATH)
     model = SentenceTransformer(c.MODEL_NAME)
