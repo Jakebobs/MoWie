@@ -25,7 +25,7 @@ export function Navbar(props) {
                 {/* Toggle based on website size */}
                 <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
                     <li><button className="nav-button" onClick={() => window.location.href = "#"}><TiHome /> Home</button></li>
-                    <li><button className="nav-button" onClick={() => window.location.href = "#leaderboard"}><FaTrophy /> Leaderboard</button></li>
+                    <li><button className="nav-button" onClick={() => window.location.href = "#leaderboard"}><FaTrophy /> Social</button></li>
                     <li><button className="nav-button" onClick={() => window.location.href = "#about"}><IoPeople /> About Us</button></li>
                     <li><button className="nav-button" onClick={() => window.location.href = "#auth"}><FaUserCircle /> {props.user ? "My Profile" : "Login"}</button></li> 
                 </ul>

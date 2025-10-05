@@ -9,7 +9,7 @@ const Home = observer(
 
 		async function queryACB(){
 			try {
-				const response = await fetch('http://localhost:5000/api/query', {
+				const response = await fetch('http://localhost:5000/api/query_n_best_matches', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -17,8 +17,8 @@ const Home = observer(
 					body: JSON.stringify({ text: props.model.query }),
 				});
 				const data = await response.json();
-				props.model.setResult(data.name)
-				console.log('Result:', data.name);
+				props.model.setResult(data)
+				console.log('Result:', data);
 			} catch (error) {
 				console.error('Error calling Python API:', error);
 			}

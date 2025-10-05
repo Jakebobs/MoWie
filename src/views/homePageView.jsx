@@ -30,7 +30,14 @@ export function HomePage(props) {
                         props.result===0
                         ? <h3>No result</h3>
                         : <div>
-                            <h3> We recommend: {props.result}</h3>
+                            <h3> The wizard recommends:</h3>
+                                <div>
+                                    {props.model.result.map((movie, index) => (
+                                        <div key={movie.imdb_id}>
+                                            {index + 1}. {movie.name} ({movie.year})
+                                        </div>
+                                    ))}
+                                </div>
                           </div>
                         }
                 </center>
