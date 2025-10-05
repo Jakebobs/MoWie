@@ -4,3 +4,5 @@ sentence_transformers
 transformers
 torch
 datasets
+flask
+flask_cors

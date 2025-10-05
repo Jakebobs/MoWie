@@ -17,8 +17,8 @@ const Home = observer(
 					body: JSON.stringify({ text: props.model.query }),
 				});
 				const data = await response.json();
-				props.model.setResult(data.result)
-				console.log('Result:', data.result);
+				props.model.setResult(data.name)
+				console.log('Result:', data.name);
 			} catch (error) {
 				console.error('Error calling Python API:', error);
 			}
