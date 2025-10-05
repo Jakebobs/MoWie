@@ -6,6 +6,7 @@ import { connectToPersistence } from "./JS/firestoreModel.js";
 configure({enforceActions:"never"})
 
 const reactiveModel = observable(movieModel);
+window.myModel = reactiveModel;
 
-connectToPersistence(reactiveModel, reaction)
+//connectToPersistence(reactiveModel, reaction)
 createRoot(document.getElementById('root')).render(<App model={reactiveModel} />);  
