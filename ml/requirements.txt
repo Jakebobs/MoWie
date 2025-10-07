@@ -6,3 +6,5 @@ torch
 datasets
 flask
 flask_cors
+openai
+python-dotenv

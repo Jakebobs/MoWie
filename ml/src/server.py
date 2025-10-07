@@ -5,13 +5,18 @@ from sentence_transformers import SentenceTransformer
 import constants as c
 from search import find_best_matches, find_n_best_matches
 import utils as u
+from typing import Literal
+from search_OA_api import movieSuggestion
 
 app = Flask(__name__)
 CORS(app)  # Allow requests from React
 
-database = pd.read_pickle(c.DATABASE_PATH)
-model = SentenceTransformer(c.MODEL_NAME)
-N = 10  # Hard coded
+ML_BACKEND: Literal["OAI", "QWEN_EMBED"] = "OAI"
+
+if ML_BACKEND == "QWEN_EMBED":
+    database = pd.read_pickle(c.DATABASE_PATH)
+    model = SentenceTransformer(c.MODEL_NAME)
+    N = 10  # Hard coded
 
 
 @app.route("/api/query_best_match", methods=["POST"])
@@ -27,10 +32,20 @@ def query_best_match():
 def query_n_best_matches():
     data = request.json
     text = data.get("text", "")  # här ligger användarens query
-    result = find_n_best_matches(N, [text, ""], database, model)[0]
-    return jsonify(
-        [{"name": match[0], "year": match[1], "imdb_id": match[2]} for match in result]
-    )
+    match ML_BACKEND:
+        case "QWEN_EMBED":
+            result = find_n_best_matches(N, [text, ""], database, model)[0]
+            return jsonify(
+                [
+                    {"name": match[0], "year": match[1], "imdb_id": match[2]}
+                    for match in result
+                ]
+            )
+        case "OAI":
+            result = movieSuggestion(text, c.LLM_SYSTEM_PROMPT).split("\n")
+            return jsonify(
+                [{"name": match, "year": 0, "imdb_id": 0} for match in result]
+            )
 
 
 if __name__ == "__main__":
