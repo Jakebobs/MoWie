@@ -1,3 +1,5 @@
+import "/src/style/homePage.css";
+import "/src/style/global.css";
 
 export function HomePage(props) {
     function handleEnterPressACB(evt) {
@@ -16,15 +18,15 @@ export function HomePage(props) {
 
     return (
         <div className="home-container">
-            <div className="glass-panel">
+            <div>
                 <center>
                     <h1 className="title">MoWie</h1>
                     <h2 className="subtitle">The movie magician</h2>
                     <p className="description">
                     </p>
-                     <div className="guess-window">
-                            <input type="text" placeholder="Write your query here" onChange={setQueryACB} onKeyDown={handleEnterPressACB} />
-                            <button onClick={submitACB}>Submit!</button>
+                     <div className="query-window">
+                            <input type="text" placeholder="I want the Movie to have the vibe of..." onChange={setQueryACB} onKeyDown={handleEnterPressACB}/>
+                            <button onClick={submitACB} >Submit!</button>
                     </div>
                     {
                         props.result===0

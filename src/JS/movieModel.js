@@ -6,7 +6,6 @@ export const movieModel = {
 
     setQuery(query){
         this.query = query;
-        console.log(this.query)
     },
 
     setResult(result){

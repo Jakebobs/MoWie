@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Navbar } from "./views/navbarView.jsx";
 import { Home } from "./presenters/homePresenter.jsx";
+import { About } from "./presenters/aboutPresenter.jsx"
 
 const App = observer(function App(props) {
   //if (props.model.ready) {
@@ -27,6 +28,10 @@ export function makeRouter(movieModel) {
     {
       path: "/",
       element: <Home model={movieModel} />,
+    },
+    {
+      path: "/about",
+      element: <About model={movieModel} />,
     },
   ]);
 }
