@@ -8,7 +8,7 @@ body {
     backdrop-filter: saturate(150%);
     background-size: cover;
     background-position: center;
-    background: linear-gradient(rgba(159, 159, 159, 0.076), #0000007b), url('https://images.hdqwalls.com/wallpapers/among-trees-night-is-coming-ox.jpg') no-repeat;
+    background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #000000 100%);
     background-size: cover;
     overflow: auto; /*overflow:hidden;*/
 }
@@ -45,3 +45,4 @@ button {
     line-height: 1.5;
 	text-align: justify;
 }
+

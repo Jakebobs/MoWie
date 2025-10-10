@@ -3,7 +3,7 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     background-color:transparent;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -48,9 +48,9 @@
 }
 
 .nav-button {
-    background-color: #323733;  
-    color: white;
-    border: none;
+    background-color: #eae4e3;  
+    color: rgb(21, 16, 16);
+    border: 2px solid #efe9e8;
     padding: 10px 15px;
     font-size: 1rem;
     font-weight: bold;
@@ -62,6 +62,7 @@
 
 .nav-button:hover {
     background-color: #ff6b6b; 
+    border: 2px solid #e24d2f;
 }
 
 .hamburger {
@@ -70,7 +71,7 @@
 }
 
 /* Smaller screen */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
     .navbar {
         flex-direction: row; 
     }
@@ -85,7 +86,8 @@
         position: absolute;
         top: 60px;
         right: 10px;
-        background-color: #1b1b1b;
+        background-color: #1e1e3c80;
+        ;
         border-radius: 5px;
         padding: 10px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
