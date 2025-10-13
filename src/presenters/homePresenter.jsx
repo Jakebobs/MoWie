@@ -29,6 +29,7 @@ const Home = observer(
 			<div>
 				<HomePage model={props.model}
 						  result = {props.model.result}
+						  testMovies = {props.model.testMovies}
 						  onSubmit={queryACB}
 						  onSetQuery={setQueryACB}/>
 			</div>

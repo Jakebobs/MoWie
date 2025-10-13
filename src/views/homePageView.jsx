@@ -1,5 +1,6 @@
 import "/src/style/homePage.css";
 import "/src/style/global.css";
+import placeholderImage from '../../assets/placeholder.png';
 
 export function HomePage(props) {
     function handleEnterPressACB(evt) {
@@ -31,21 +32,6 @@ export function HomePage(props) {
                 </span>
             </div>
 
-            {
-            props.result===0
-            ? <h3>No result</h3>
-                : <div>
-                    <h3> The wizard recommends:</h3>
-                        <div>
-                            {props.model.result.map((movie, index) => (
-                                <div key={movie.imdb_id}>
-                                    {index + 1}. {movie.name} ({movie.year}, {movie.genre}, {movie.imdb_rating}, {movie.rt_rating})
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-            }
-
             <div className="filter-section">
                 <button className="filter-btn">Break-up</button>
                 <button className="filter-btn">Political</button>
@@ -65,13 +51,62 @@ export function HomePage(props) {
             </div>
 
             <div className="trending-section">
-                <h2 className="trending-title">Currently Trending This Week</h2>
-                <div className="movie-grid">
-                    <div className="movie-card"></div>
-                    <div className="movie-card"></div>
-                    <div className="movie-card"></div>
-                    <div className="movie-card"></div>
-                </div>
+                {props.result !== 0 ? (
+                    <>
+                    <h2 className="trending-title">Currently Trending This Week</h2>
+                        <div className="movie-grid">
+                            {props.model.result.map((movie, index) => (
+                                <div
+                                    key={movie.imdb_id}
+                                    className="movie-card"
+                                    style={{
+                                        backgroundImage: `url(${movie.image || placeholderImage})`,
+                                    }}
+                                >
+                                    <div className="movie-rank">{index + 1}</div>
+
+                                    <div className="movie-overlay">
+                                        <h4 className="movie-title">{movie.name}</h4>
+                                        <div className="movie-details">
+                                            <span>{movie.year}</span>
+                                            <span>{movie.genre}</span>
+                                            <span>IMDB: {movie.imdb_rating}</span>
+                                            <span>RT: {movie.rt_rating}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <h2 className="trending-title">Currently trending</h2>
+                        <div className="movie-grid">
+                            {props.testMovies.map((movie, index) => (
+                                <div
+                                    key={movie.id}
+                                    className="movie-card"
+                                    style={{
+                                        backgroundImage: `url(${placeholderImage})`,
+                                    }}
+                                >
+                                    <div className="movie-rank">
+                                        {index + 1}
+                                    </div>
+                                    <div className="movie-overlay">
+                                        <h4 className="movie-title">{movie.title}</h4>
+                                        <div className="movie-details">
+                                            <span>{movie.year}</span>
+                                            <span>{movie.genre}</span>
+                                            <span>IMDB: {movie.imdb_rating}</span>
+                                            <span>RT: {movie.rt_rating}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     </div>
