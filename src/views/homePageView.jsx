@@ -60,7 +60,7 @@ export function HomePage(props) {
                                     key={movie.imdb_id}
                                     className="movie-card"
                                     style={{
-                                        backgroundImage: `url(${movie.image || placeholderImage})`,
+                                        backgroundImage: `url(${movie.Poster || placeholderImage})`,
                                     }}
                                 >
                                     <div className="movie-rank">{index + 1}</div>
