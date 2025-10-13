@@ -22,7 +22,7 @@ export function HomePage(props) {
             <h1>Let me find you a Movie!</h1>
             
             <div className="search-box">
-                <input type="text" className="search-input" placeholder="I want the Movie to have the vibe of..."></input>
+                <input type="text" className="search-input" onChange={setQueryACB} onKeyDown={handleEnterPressACB} placeholder="I want the Movie to have the vibe of..."></input>
                 <span className="search-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -30,6 +30,21 @@ export function HomePage(props) {
                     </svg>
                 </span>
             </div>
+
+            {
+            props.result===0
+            ? <h3>No result</h3>
+                : <div>
+                    <h3> The wizard recommends:</h3>
+                        <div>
+                            {props.model.result.map((movie, index) => (
+                                <div key={movie.imdb_id}>
+                                    {index + 1}. {movie.name} ({movie.year})
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+            }
 
             <div className="filter-section">
                 <button className="filter-btn">Break-up</button>
