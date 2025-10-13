@@ -3,6 +3,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Navbar } from "./views/navbarView.jsx";
 import { Home } from "./presenters/homePresenter.jsx";
 import { About } from "./presenters/aboutPresenter.jsx"
+import { Auth } from "./presenters/authPresenter.jsx"
 
 const App = observer(function App(props) {
   //if (props.model.ready) {
@@ -32,6 +33,10 @@ export function makeRouter(movieModel) {
     {
       path: "/about",
       element: <About model={movieModel} />,
+    },
+    {
+      path: "/auth",
+      element: <Auth model={movieModel} />,
     },
   ]);
 }

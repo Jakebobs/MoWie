@@ -28,7 +28,7 @@ export function AboutUs() {
             </div>
             <div className="profile">
               <img src={fanny} width="120" />
-              <p>fanny</p>
+              <p>Fanny</p>
             </div>
             <div className="profile">
               <img src={joel} width="120" />

@@ -27,20 +27,20 @@ button {
     font-size: 2.5rem;
     font-weight: bold;
     color:white;
-    font-family: 'Orbitron', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     margin-top: 100px;
 }
 
 .subtitle {
     font-size: 1.8rem;
     color: #f5fefd; 
-    font-family: 'Orbitron', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .description {
     font-size: 1.1rem;
     color: #e0e0e0;
-    font-family: 'Orbitron', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     max-width: 600px;
     line-height: 1.5;
 	text-align: justify;
