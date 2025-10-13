@@ -7,6 +7,7 @@ from search import find_best_matches, find_n_best_matches
 import utils as u
 from typing import Literal
 from search_OA_api import movieSuggestion
+import omdb_api as o
 
 app = Flask(__name__)
 CORS(app)  # Allow requests from React
@@ -43,9 +44,8 @@ def query_n_best_matches():
             )
         case "OAI":
             result = movieSuggestion(text, c.LLM_SYSTEM_PROMPT).split("\n")
-            return jsonify(
-                [{"name": match, "year": 0, "imdb_id": 0, "genre": "hej", "imdb_rating": 0, "rt_rating": 0} for match in result]
-            )
+            full_results = o.get_info(result)
+            return jsonify(full_results)
 
 
 if __name__ == "__main__":
