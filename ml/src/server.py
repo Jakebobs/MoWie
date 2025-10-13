@@ -44,7 +44,7 @@ def query_n_best_matches():
         case "OAI":
             result = movieSuggestion(text, c.LLM_SYSTEM_PROMPT).split("\n")
             return jsonify(
-                [{"name": match, "year": 0, "imdb_id": 0} for match in result]
+                [{"name": match, "year": 0, "imdb_id": 0, "genre": "hej" "imdb_rating": 0, "rt_rating": 0} for match in result]
             )
 
 

@@ -39,7 +39,7 @@ export function HomePage(props) {
                         <div>
                             {props.model.result.map((movie, index) => (
                                 <div key={movie.imdb_id}>
-                                    {index + 1}. {movie.name} ({movie.year})
+                                    {index + 1}. {movie.name} ({movie.year}, {movie.genre}, {movie.imdb_rating}, {movie.rt_rating})
                                 </div>
                             ))}
                         </div>
