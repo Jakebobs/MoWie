@@ -20,7 +20,7 @@ export function HomePage(props) {
     return (
         <div className="movie-finder-wrapper">
         <div className="container">
-            <h1>Let me find you a Movie!</h1>
+            <h1>Let the Wizard Find You a Movie!</h1>
             
             <div className="search-box">
                 <input type="text" className="search-input" onChange={setQueryACB} onKeyDown={handleEnterPressACB} placeholder="I want the Movie to have the vibe of..."></input>
@@ -53,7 +53,7 @@ export function HomePage(props) {
             <div className="trending-section">
                 {props.result !== 0 ? (
                     <>
-                    <h2 className="trending-title">Currently Trending This Week</h2>
+                    <h2 className="trending-title">The Wizard Recommends:</h2>
                         <div className="movie-grid">
                             {props.model.result.map((movie, index) => (
                                 <div

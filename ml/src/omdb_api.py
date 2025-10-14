@@ -28,7 +28,10 @@ def get_info(results: List[str]) -> List[dict[str, Any]]:
 
 def _query_api(title: str) -> dict[str, Any]:
     req = r.get(f"http://www.omdbapi.com/?apikey={apikey}&t={title}")
-    result = req.json()
+    try:
+        result = req.json()
+    except:
+        raise MovieNotFoundError("placeholder")
     if not result["Response"] or result["Response"] == "False":
         raise MovieNotFoundError("No movie found")
     try:
