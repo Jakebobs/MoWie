@@ -30,6 +30,7 @@ def movieSuggestion(userPrompt, systemPrompt, model="gpt-5-nano"):
             {"role": "user", "content": prompt},
         ],
         service_tier="priority",
+        reasoning={"effort": "minimal"},
     )
 
     return response.output_text
