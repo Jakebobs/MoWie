@@ -7,6 +7,7 @@ export const movieModel = {
     selectedVibes: [],
     selectedGenres: [],
     selectedMoods: [],
+    hasSetLevels: false,
     energyLevel: 50,
     attentionLevel: 50,
 
@@ -186,16 +187,23 @@ export const movieModel = {
     },
 
     resetMood() {
+        this.hasSetLevels = false;
         this.selectedMoods = [];
         this.energyLevel = 50;
         this.attentionLevel = 50;
     },
 
     setEnergy(value) {
+        if(this.hasSetLevels!==true){
+            this.hasSetLevels = true;
+        }
         this.energyLevel = value;
     },
 
     setAttention(value) {
+         if(this.hasSetLevels!==true){
+            this.hasSetLevels = true;
+        }
         this.attentionLevel = value;
     },
 
