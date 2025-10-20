@@ -18,7 +18,7 @@ const Home = observer(
 					headers: {
 						'Content-Type': 'application/json',
 					},
-					body: JSON.stringify({ text: props.model.query }),
+					body: JSON.stringify({ text: props.model.baseQuery }),
 				});
 				const data = await response.json();
 				props.model.setResult(data)
