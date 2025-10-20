@@ -4,8 +4,6 @@ export const movieModel = {
     baseQuery: 0,
     result: 0,
     selectedTopics: [],
-    
-    // New filter states
     selectedVibes: [],
     selectedGenres: [],
     selectedMoods: [],
@@ -23,7 +21,6 @@ export const movieModel = {
         "Break-up",
         "Political",
         "Sad Crime",
-        // ... rest of your topics
     ],
 
     randomTopics: [],
@@ -42,22 +39,18 @@ export const movieModel = {
         this.randomTopics = selected;
     },
 
-    // Vibe methods - using MobX array mutations
     toggleVibe(vibe) {
-    console.log('Toggling vibe:', vibe, 'Current vibes:', this.selectedVibes);
     const index = this.selectedVibes.indexOf(vibe);
     if (index > -1) {
         this.selectedVibes.splice(index, 1);
     } else {
         this.selectedVibes.push(vibe);
-    }
-    console.log('After toggle:', this.selectedVibes);    },
+    }},
 
     clearVibes() {
         this.selectedVibes = [];
     },
 
-    // Genre methods
     toggleGenre(genre) {
         const index = this.selectedGenres.indexOf(genre);
         if (index > -1) {
@@ -71,7 +64,6 @@ export const movieModel = {
         this.selectedGenres = [];
     },
 
-    // Mood methods
     toggleMood(mood) {
         const index = this.selectedMoods.indexOf(mood);
         if (index > -1) {
@@ -95,9 +87,4 @@ export const movieModel = {
         this.attentionLevel = value;
     },
 
-    resetMood() {
-        this.selectedMoods.length = 0;  // Clear array in place
-        this.energyLevel = 50;
-        this.attentionLevel = 50;
-    },
 }

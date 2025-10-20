@@ -114,6 +114,11 @@ h1 {
     transition: background-color 0.3s;
 }
 
+.dropdown.selected {
+    background-color: #4A9EFF; 
+    color: white;
+}
+
 .dropdown:hover {
     background-color: #2a2a2a;
 }

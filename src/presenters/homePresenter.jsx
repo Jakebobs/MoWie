@@ -28,7 +28,6 @@ const Home = observer(
 			}
 		}
 
-		// Vibe modal callbacks
 		function vibeToggleACB(vibe) {
 			props.model.toggleVibe(vibe);
 		}
@@ -37,7 +36,6 @@ const Home = observer(
 			props.model.clearVibes();
 		}
 
-		// Genre modal callbacks
 		function genreToggleACB(genre) {
 			props.model.toggleGenre(genre);
 		}
@@ -46,7 +44,6 @@ const Home = observer(
 			props.model.clearGenres();
 		}
 
-		// Mood modal callbacks
 		function moodToggleACB(mood) {
 			props.model.toggleMood(mood);
 		}
@@ -78,13 +75,10 @@ const Home = observer(
 					onSubmit={queryACB}
 					onSetQuery={setQueryACB}
 					onLoadTopics={setTopicsACB}
-					// Vibe props
 					onVibeToggle={vibeToggleACB}
 					onVibesClear={vibesClearACB}
-					// Genre props
 					onGenreToggle={genreToggleACB}
 					onGenresClear={genresClearACB}
-					// Mood props
 					onMoodToggle={moodToggleACB}
 					onEnergyChange={energyChangeACB}
 					onAttentionChange={attentionChangeACB}

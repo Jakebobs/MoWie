@@ -61,7 +61,15 @@ export function HomePage(props) {
 
     function handleDropdownClickACB(option) {
         setActiveModal(option.toLowerCase());
-    }
+    }  
+
+    const hasVibesSelected = props.selectedVibes && props.selectedVibes.length > 0;
+
+    const hasGenresSelected = props.selectedGenres && props.selectedGenres.length > 0;
+
+    const hasMoodSelected = (props.selectedMoods && props.selectedMoods.length > 0) ||
+                            props.energyLevel !== 50 ||
+                            props.attentionLevel !== 50;
 
 
     useEffect(() => {
@@ -93,13 +101,22 @@ export function HomePage(props) {
             </div>
 
             <div className="dropdown-section">
-                <div className="dropdown" onClick={() => handleDropdownClickACB('Vibe')}>
+                <div 
+                    className={`dropdown ${hasVibesSelected ? 'selected' : ''}`}
+                    onClick={() => handleDropdownClickACB('Vibe')}
+                >
                     Vibe
                 </div>
-                <div className="dropdown" onClick={() => handleDropdownClickACB('Genre')}>
+                <div 
+                    className={`dropdown ${hasGenresSelected ? 'selected' : ''}`}
+                    onClick={() => handleDropdownClickACB('Genre')}
+                >
                     Genre
                 </div>
-                <div className="dropdown" onClick={() => handleDropdownClickACB('Set the Mood')}>
+                <div 
+                    className={`dropdown ${hasMoodSelected ? 'selected' : ''}`}
+                    onClick={() => handleDropdownClickACB('Set the Mood')}
+                >
                     Set the Mood
                 </div>
             </div>
