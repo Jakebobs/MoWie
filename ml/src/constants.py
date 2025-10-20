@@ -58,3 +58,15 @@ REJECTIONS = [
 REJECTION
 </OUTPUT_FORMAT>""",
 ]
+VERY_HIGH_ATTENTION = "I want to be fully engaged, focused and immersed while watching the film. I should forget about the outside world while watching it."
+HIGH_ATTENTION = (
+    "I want to be very engaged, focused and immersed while watching the film."
+)
+
+LOW_ATTENTION = "I want to have more casual viewing experience that does not require full engagement and focus."
+VERY_LOW_ATTENTION = "I don't want to pay too much attention to this movie, give me something I could put on in the background while doing other things."
+
+VERY_HIGH_ENERGY = "I want to watch an extremely high energy and thrilling film!"
+HIGH_ENERGY = "I want to watch a high energy film."
+LOW_ENERGY = "I want the film to be more calm."
+VERY_LOW_ENERGY = "I want to watch an extremely calm and relaxed film."

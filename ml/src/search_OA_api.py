@@ -17,9 +17,12 @@ def validate_oa_response(response: str) -> bool:
     return len(rlist) == 10
 
 
-def movieSuggestion(userPrompt, systemPrompt, model="gpt-5-nano"):
+def movieSuggestion(
+    userPrompt, systemPrompt, model="gpt-5-nano", extra_user_input: dict = None
+):
     print(f"DEBUG: model is {model}")
-    prompt = parse(userPrompt)
+    prompt = parse(userPrompt, extra_user_input)
+    print(f"DEBUG: prompt is {prompt}")
     response = client.responses.create(
         model=model,
         input=[
@@ -36,8 +39,49 @@ def movieSuggestion(userPrompt, systemPrompt, model="gpt-5-nano"):
     return response.output_text
 
 
-def parse(userprompt):
-    return userprompt
+def parse(userprompt, extraUserInput: dict = None):
+    if extraUserInput is None:
+        return userprompt
+
+    if userprompt == 0:
+        userprompt = ""
+
+    topicSubStr = (
+        "I would like the movie to cover one of these topics: "
+        + ", ".join(extraUserInput["selectedTopics"])
+        + ". "
+        if extraUserInput["selectedTopics"] != []
+        else ""
+    )
+
+    vibesSubStr = (
+        "I would like the movie to have one of these vibes: "
+        + ", ".join(extraUserInput["selectedVibes"])
+        + ". "
+        if extraUserInput["selectedVibes"] != []
+        else ""
+    )
+
+    genresSubStr = (
+        "I would like the movie to be of one of these genres: "
+        + ", ".join(extraUserInput["selectedGenres"])
+        + ". "
+        if extraUserInput["selectedGenres"] != []
+        else ""
+    )
+
+    moodSubStr = (
+        "I would like the movie to have one of these moods: "
+        + ", ".join(extraUserInput["selectedMoods"])
+        + ". "
+        if extraUserInput["selectedMoods"] != []
+        else ""
+    )
+
+    return (
+        userprompt
+        + f"{'Also, ' if userprompt != '' else ''}{topicSubStr}{vibesSubStr}{genresSubStr}{moodSubStr}Additionally, {extraUserInput['energyLevel']} And {extraUserInput['attentionLevel']}"
+    )
 
 
 if __name__ == "__main__":
