@@ -8,7 +8,7 @@ body {
     backdrop-filter: saturate(150%);
     background-size: cover;
     background-position: center;
-    background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #000000 100%);
+    background: var(--Dark-backgrund, radial-gradient(50% 50% at 50% 50%, #2C3A3D 0%, #050606 100%));
     background-size: cover;
     overflow: auto; /*overflow:hidden;*/
 }

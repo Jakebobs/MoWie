@@ -1,8 +1,14 @@
+import { useEffect, useState } from "react";
 import "/src/style/homePage.css";
 import "/src/style/global.css";
+import { VibeModal } from "../components/vibeModal.jsx";
+import { GenreModal } from "../components/genreModal.jsx";
+import { MoodModal } from "../components/moodModal.jsx";
 import placeholderImage from '../../assets/placeholder.png';
 
 export function HomePage(props) {
+    const [activeModal, setActiveModal] = useState(null);
+
     function handleEnterPressACB(evt) {
         if (evt.key === 'Enter') {
             submitACB();
@@ -13,18 +19,64 @@ export function HomePage(props) {
         props.onSubmit()
     }
 
+    function loadRandomTopicsACB(){
+        props.onLoadTopics();
+    }
+
     function setQueryACB(evt) {
         props.onSetQuery(evt.target.value)
     }
 
+    function handleVibeToggleACB(vibe) {
+        props.onVibeToggle(vibe);
+    }
+
+    function handleVibesClearACB() {
+        props.onVibesClear();
+    }
+
+    function handleGenreToggleACB(genre) {
+        props.onGenreToggle(genre);
+    }
+
+    function handleGenresClearACB() {
+        props.onGenresClear();
+    }
+
+    function handleMoodToggleACB(mood) {
+        props.onMoodToggle(mood);
+    }
+
+    function handleEnergyChangeACB(value) {
+        props.onEnergyChange(value);
+    }
+
+    function handleAttentionChangeACB(value) {
+        props.onAttentionChange(value);
+    }
+
+    function handleMoodResetACB() {
+        props.onMoodReset();
+    }
+
+    function handleDropdownClickACB(option) {
+        setActiveModal(option.toLowerCase());
+    }
+
+
+    useEffect(() => {
+    if (props.model?.topics?.length > 0) {
+        loadRandomTopicsACB();
+    }
+    }, []);
+
     return (
         <div className="movie-finder-wrapper">
         <div className="container">
-            <h1>Let the Wizard Find You a Movie!</h1>
-            
+            {props.result === 0 && <h1>Let the Wizard Find You a Movie!</h1>}
             <div className="search-box">
                 <input type="text" className="search-input" onChange={setQueryACB} onKeyDown={handleEnterPressACB} placeholder="I want the Movie to have the vibe of..."></input>
-                <span className="search-icon">
+                <span className="search-icon" onClick={submitACB}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="m21 21-4.35-4.35"></path>
@@ -33,22 +85,53 @@ export function HomePage(props) {
             </div>
 
             <div className="filter-section">
-                <button className="filter-btn">Break-up</button>
-                <button className="filter-btn">Political</button>
-                <button className="filter-btn">Sad Crime</button>
-                <button className="filter-btn">Korean Thriller</button>
-                <button className="filter-btn">Survival Game</button>
-                <button className="filter-btn">Scary Zombies</button>
+                {props.randomTopics?.map((topic, i) => (
+                        <button key={i} className="filter-btn">
+                            {topic}
+                        </button>
+                ))}
             </div>
 
             <div className="dropdown-section">
-                <div className="dropdown">Series</div>
-                <div className="dropdown">Genre</div>
-                <div className="dropdown">Vibe</div>
-                <div className="dropdown">Set the Mood</div>
-                <div className="dropdown">IMDB Rating</div>
-                <div className="dropdown">Streaming Services</div>
+                <div className="dropdown" onClick={() => handleDropdownClickACB('Vibe')}>
+                    Vibe
+                </div>
+                <div className="dropdown" onClick={() => handleDropdownClickACB('Genre')}>
+                    Genre
+                </div>
+                <div className="dropdown" onClick={() => handleDropdownClickACB('Set the Mood')}>
+                    Set the Mood
+                </div>
             </div>
+
+
+            <VibeModal
+                isOpen={activeModal === 'vibe'}
+                onClose={() => setActiveModal(null)}
+                selectedVibes={props.selectedVibes || []}
+                onVibeToggle={handleVibeToggleACB}
+                onVibesClear={handleVibesClearACB}
+            />
+
+            <GenreModal
+                isOpen={activeModal === 'genre'}
+                onClose={() => setActiveModal(null)}
+                selectedGenres={props.selectedGenres || []}
+                onGenreToggle={handleGenreToggleACB}
+                onGenresClear={handleGenresClearACB}
+            />
+
+            <MoodModal
+                isOpen={activeModal === 'set the mood'}
+                onClose={() => setActiveModal(null)}
+                selectedMoods={props.selectedMoods || []}
+                onMoodToggle={handleMoodToggleACB}
+                energyLevel={props.energyLevel || 50}
+                onEnergyChange={handleEnergyChangeACB}
+                attentionLevel={props.attentionLevel || 50}
+                onAttentionChange={handleAttentionChangeACB}
+                onMoodReset={handleMoodResetACB}
+            />
 
             <div className="trending-section">
                 {props.result !== 0 ? (
