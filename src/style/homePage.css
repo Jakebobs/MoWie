@@ -92,6 +92,11 @@ h1 {
     background-color: #2a2a2a;
 }
 
+.filter-btn.selected {
+    background-color: #4A9EFF; 
+    color: white;
+}
+
 .filter-btn::before {
     content: '+';
     font-size: 16px;

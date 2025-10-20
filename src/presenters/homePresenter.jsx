@@ -28,6 +28,10 @@ const Home = observer(
 			}
 		}
 
+		function topicToggleACB(topic) {
+			props.model.toggleTopic(topic);
+		}
+
 		function vibeToggleACB(vibe) {
 			props.model.toggleVibe(vibe);
 		}
@@ -70,6 +74,7 @@ const Home = observer(
 					selectedVibes={props.model.selectedVibes}
 					selectedGenres={props.model.selectedGenres}
 					selectedMoods={props.model.selectedMoods}
+					selectedTopics={props.model.selectedTopics}
 					energyLevel={props.model.energyLevel}
 					attentionLevel={props.model.attentionLevel}
 					onSubmit={queryACB}
@@ -83,6 +88,7 @@ const Home = observer(
 					onEnergyChange={energyChangeACB}
 					onAttentionChange={attentionChangeACB}
 					onMoodReset={moodResetACB}
+					onTopicToggle={topicToggleACB}
 				/>
 			</div>
 		)

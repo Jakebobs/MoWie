@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import "/src/style/homePage.css";
 import "/src/style/global.css";
@@ -6,7 +7,7 @@ import { GenreModal } from "../components/genreModal.jsx";
 import { MoodModal } from "../components/moodModal.jsx";
 import placeholderImage from '../../assets/placeholder.png';
 
-export function HomePage(props) {
+export const HomePage = observer(function HomePage(props) {
     const [activeModal, setActiveModal] = useState(null);
 
     function handleEnterPressACB(evt) {
@@ -63,6 +64,10 @@ export function HomePage(props) {
         setActiveModal(option.toLowerCase());
     }  
 
+    function handleTopicClickACB(topic) {
+        props.onTopicToggle(topic);
+    }
+
     const hasVibesSelected = props.selectedVibes && props.selectedVibes.length > 0;
 
     const hasGenresSelected = props.selectedGenres && props.selectedGenres.length > 0;
@@ -94,7 +99,11 @@ export function HomePage(props) {
 
             <div className="filter-section">
                 {props.randomTopics?.map((topic, i) => (
-                        <button key={i} className="filter-btn">
+                        <button 
+                            key={i} 
+                            className={`filter-btn ${props.selectedTopics?.includes(topic) ? 'selected' : ''}`}
+                            onClick={() => handleTopicClickACB(topic)}
+                        >
                             {topic}
                         </button>
                 ))}
@@ -211,4 +220,4 @@ export function HomePage(props) {
         </div>
     </div>
     );
-}
+});
