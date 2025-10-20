@@ -18,7 +18,16 @@ const Home = observer(
 					headers: {
 						'Content-Type': 'application/json',
 					},
-					body: JSON.stringify({ text: props.model.baseQuery }),
+					body: JSON.stringify({ 
+						text: props.model.baseQuery,
+						selectedTopics: props.model.selectedTopics,
+						selectedVibes: props.model.selectedVibes,
+						selectedGenres: props.model.selectedGenres,
+						selectedMoods: props.model.selectedMoods,
+						energyLevel: props.model.energyLevel,
+						attentionLevel: props.model.attentionLevel,
+						hasSetLevels: props.model.hasSetLevels,
+     				 }),
 				});
 				const data = await response.json();
 				props.model.setResult(data)
