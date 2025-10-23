@@ -11,6 +11,7 @@ export const movieModel = {
     energyLevel: 50,
     attentionLevel: 50,
     selectedMovie: null,
+    isLoading: false,
 
     testMovies: [
         { id: 1, title: "Dune: Part Two", year: 2024, genre: "Thriller", rt_rating: 5, imdb_rating: 10},
@@ -231,6 +232,10 @@ export const movieModel = {
         } else {
             this.selectedTopics.push(topic); 
         }
+    },
+
+    setLoading(loading) {
+        this.isLoading = loading;
     },
 
 }

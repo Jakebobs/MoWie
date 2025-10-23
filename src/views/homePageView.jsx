@@ -6,6 +6,7 @@ import { VibeModal } from "../components/vibeModal.jsx";
 import { GenreModal } from "../components/genreModal.jsx";
 import { MoodModal } from "../components/moodModal.jsx";
 import placeholderImage from '../../assets/placeholder.png';
+import loadingGif from '../../assets/Loading.gif';
 
 export const HomePage = observer(function HomePage(props) {
     const [activeModal, setActiveModal] = useState(null);
@@ -165,7 +166,11 @@ export const HomePage = observer(function HomePage(props) {
             />
 
             <div className="trending-section">
-                {props.result !== 0 ? (
+                {props.isLoading ? (
+                    <div className="loading-container">
+                        <img src={loadingGif} alt="Loading..." className="loading-gif" />
+                    </div>
+                ) : props.result !== 0 ? (
                     <>
                     <h2 className="trending-title">The Wizard Recommends:</h2>
                         <div className="movie-grid">
@@ -207,7 +212,7 @@ export const HomePage = observer(function HomePage(props) {
                                         backgroundImage: `url(${placeholderImage})`,
                                     }}
                                     onClick={() => {
-                                        
+
                                         const testMovie = {
                                             name: movie.title,
                                             year: movie.year,

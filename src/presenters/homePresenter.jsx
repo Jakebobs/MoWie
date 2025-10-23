@@ -13,6 +13,7 @@ const Home = observer(
 
 		async function queryACB(){
 			try {
+				props.model.setLoading(true);
 				const response = await fetch('http://localhost:5000/api/query_n_best_matches', {
 					method: 'POST',
 					headers: {
@@ -34,6 +35,8 @@ const Home = observer(
 				console.log('Result:', data);
 			} catch (error) {
 				console.error('Error calling Python API:', error);
+			} finally{
+				props.model.setLoading(false);
 			}
 		}
 
@@ -90,6 +93,7 @@ const Home = observer(
 					selectedTopics={props.model.selectedTopics}
 					energyLevel={props.model.energyLevel}
 					attentionLevel={props.model.attentionLevel}
+					isLoading={props.model.isLoading} 
 					onSubmit={queryACB}
 					onSetQuery={setQueryACB}
 					onLoadTopics={setTopicsACB}
@@ -103,6 +107,7 @@ const Home = observer(
 					onMoodReset={moodResetACB}
 					onTopicToggle={topicToggleACB}
 					onMovieSelect={movieSelectACB}
+					
 				/>
 			</div>
 		)
