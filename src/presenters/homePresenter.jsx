@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { HomePage } from "../views/homePageView"
 
 const Home = observer(
-	function homeRender(props) {
+	function HomeRender(props) {
 		function setQueryACB(value){
 			props.model.setQuery(value)
 		}
@@ -73,6 +73,10 @@ const Home = observer(
 			props.model.resetMood();
 		}
 
+		function movieSelectACB(movie) {
+    		props.model.setSelectedMovie(movie);
+		}
+
 		return (
 			<div>
 				<HomePage 
@@ -98,6 +102,7 @@ const Home = observer(
 					onAttentionChange={attentionChangeACB}
 					onMoodReset={moodResetACB}
 					onTopicToggle={topicToggleACB}
+					onMovieSelect={movieSelectACB}
 				/>
 			</div>
 		)

@@ -6,7 +6,7 @@ import stella from '../../assets/placeholder.png';
 import joel from '../../assets/placeholder.png';
 import fanny from '../../assets/placeholder.png'
 
-export function AboutUs() { 
+export function AboutUsView() { 
   return (
     <div className="about-container">
       <div className="glass-panel">

@@ -4,6 +4,10 @@ import { Navbar } from "./views/navbarView.jsx";
 import { Home } from "./presenters/homePresenter.jsx";
 import { About } from "./presenters/aboutPresenter.jsx"
 import { Auth } from "./presenters/authPresenter.jsx"
+import { MovieDetail } from "./presenters/movieDetailPresenter.jsx";
+import { Registration } from "./presenters/registerPresenter.jsx";
+import { Watchlist } from "./presenters/watchlistPresenter.jsx";
+import { Social } from "./presenters/socialPresenter.jsx";
 
 const App = observer(function App(props) {
   //if (props.model.ready) {
@@ -37,6 +41,22 @@ export function makeRouter(movieModel) {
     {
       path: "/auth",
       element: <Auth model={movieModel} />,
+    },
+    {
+      path: "/movie/:id",
+      element: <MovieDetail model={movieModel} />,
+    },
+    {
+      path: "/register",
+      element: <Registration model={movieModel}/>
+    },
+    {
+      path: "/watchlist",
+      element: <Watchlist model={movieModel}/>
+    },  
+    {
+      path: "/social",
+      element: <Social model={movieModel}/>
     },
   ]);
 }

@@ -68,6 +68,11 @@ export const HomePage = observer(function HomePage(props) {
         props.onTopicToggle(topic);
     }
 
+    function selectMovieACB(movie){
+        props.onMovieSelect(movie);
+        window.location.href = `#/movie/${movie.imdb_id}`;
+    }
+
     const hasVibesSelected = props.selectedVibes && props.selectedVibes.length > 0;
 
     const hasGenresSelected = props.selectedGenres && props.selectedGenres.length > 0;
@@ -171,6 +176,9 @@ export const HomePage = observer(function HomePage(props) {
                                     style={{
                                         backgroundImage: `url(${movie.Poster || placeholderImage})`,
                                     }}
+                                    onClick={() => {
+                                        selectMovieACB(movie)
+                                    }}
                                 >
                                     <div className="movie-rank">{index + 1}</div>
 
@@ -197,6 +205,18 @@ export const HomePage = observer(function HomePage(props) {
                                     className="movie-card"
                                     style={{
                                         backgroundImage: `url(${placeholderImage})`,
+                                    }}
+                                    onClick={() => {
+                                        
+                                        const testMovie = {
+                                            name: movie.title,
+                                            year: movie.year,
+                                            genre: movie.genre,
+                                            imdb_rating: movie.imdb_rating,
+                                            rt_rating: movie.rt_rating,
+                                            imdb_id: movie.id
+                                        };
+                                        selectMovieACB(testMovie)
                                     }}
                                 >
                                     <div className="movie-rank">

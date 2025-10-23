@@ -1,11 +1,11 @@
 import { observer } from "mobx-react-lite";
-import { AboutUs } from "../views/aboutView";
+import { AboutUsView } from "../views/aboutView";
 
 const About = observer(
 	function AboutRender(props) {
 		return (
 			<div>				
-				<AboutUs model={props.model}/>
+				<AboutUsView model={props.model}/>
 			</div>
 		)
 	}

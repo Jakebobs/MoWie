@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import "../style/global.css";
 import "../style/authView.css";
 
-
-export function AuthView(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [InvalidCredential, setInvalidCredential] = useState(false);
+export function RegisterView(props) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <div>
       <center>
-        <h2 className="title">Please login here</h2>
+        <h2 className="title">Please register here</h2>
         <div className="login-wrapper">
             <div className="input-box">
               <input
@@ -31,17 +30,23 @@ export function AuthView(props) {
                 required
               />
             </div>
-            {InvalidCredential && (
-              <div className="error-text">
-                <p>Login failed</p>
-              </div>
-            )}
+            <div className="input-box">
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
+  
             <button type="submit" className="btn">
-              Login
+              Register
             </button>
+
             <div className="register-link">
               <p>
-                Don't have an account? <a href="#register">Register</a>
+                Already have an account? <a href="#auth">Login</a>
               </p>
             </div>
         </div>

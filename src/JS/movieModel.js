@@ -1,8 +1,8 @@
-import { resolvePromise } from "./resolvePromise";
 
 export const movieModel = {
     baseQuery: 0,
     result: 0,
+    watchlist: [],
     selectedTopics: [],
     selectedVibes: [],
     selectedGenres: [],
@@ -10,6 +10,7 @@ export const movieModel = {
     hasSetLevels: false,
     energyLevel: 50,
     attentionLevel: 50,
+    selectedMovie: null,
 
     testMovies: [
         { id: 1, title: "Dune: Part Two", year: 2024, genre: "Thriller", rt_rating: 5, imdb_rating: 10},
@@ -138,6 +139,18 @@ export const movieModel = {
 
     randomTopics: [],
 
+
+    addToWatchlist() {
+        const exists = this.watchlist.some(m => 
+            (m.name && m.name === this.selectedMovie.name)
+        );
+
+        if (!exists) {
+            this.watchlist.push(this.selectedMovie);
+        }
+    },
+    
+
     setQuery(query){
         this.baseQuery = query;
     },
@@ -162,6 +175,10 @@ export const movieModel = {
 
     clearVibes() {
         this.selectedVibes = [];
+    },
+
+    setSelectedMovie(movie) {
+        this.selectedMovie = movie;
     },
 
     toggleGenre(genre) {
