@@ -151,3 +151,72 @@
 .apply-btn:hover {
     background-color: #3A8EEF;
 }
+
+.add-btn {
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.add-btn:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.add-vibe-input-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.add-vibe-input {
+    flex: 1;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.add-vibe-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.add-vibe-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.confirm-add-btn,
+.cancel-add-btn {
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.confirm-add-btn {
+    background-color: #4A9EFF;
+    color: #fff;
+}
+
+.confirm-add-btn:hover {
+    background-color: #3a8eef;
+}
+
+.cancel-add-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.cancel-add-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

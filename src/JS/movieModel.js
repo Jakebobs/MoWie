@@ -12,6 +12,7 @@ export const movieModel = {
     attentionLevel: 50,
     selectedMovie: null,
     isLoading: false,
+    addedVibes: [],
 
     testMovies: [
         { id: 1, title: "Dune: Part Two", year: 2024, genre: "Thriller", rt_rating: 5, imdb_rating: 10},
@@ -236,6 +237,13 @@ export const movieModel = {
 
     setLoading(loading) {
         this.isLoading = loading;
+    },
+
+
+    addCustomVibe(vibe) {
+        if (!this.addedVibes.includes(vibe)) {
+            this.addedVibes.push(vibe);
+        }
     },
 
 }

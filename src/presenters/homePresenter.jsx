@@ -80,6 +80,10 @@ const Home = observer(
     		props.model.setSelectedMovie(movie);
 		}
 
+		function vibeAddACB(vibe) {
+    		props.model.addCustomVibe(vibe);
+		}
+
 		return (
 			<div>
 				<HomePage 
@@ -107,6 +111,7 @@ const Home = observer(
 					onMoodReset={moodResetACB}
 					onTopicToggle={topicToggleACB}
 					onMovieSelect={movieSelectACB}
+					onVibeAdd={vibeAddACB}
 					
 				/>
 			</div>

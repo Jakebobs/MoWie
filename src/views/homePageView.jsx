@@ -143,6 +143,7 @@ export const HomePage = observer(function HomePage(props) {
                 selectedVibes={props.selectedVibes || []}
                 onVibeToggle={handleVibeToggleACB}
                 onVibesClear={handleVibesClearACB}
+                onVibeAdd={props.onVibeAdd}
             />
 
             <GenreModal
