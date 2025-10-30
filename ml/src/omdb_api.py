@@ -42,6 +42,7 @@ def _query_api(title: str) -> dict[str, Any]:
     result["year"] = result["Year"]
     result["imdb_id"] = result["imdbID"]
     result["genre"] = result["Genre"]
+    result["description"] = result["Plot"]
     result["imdb_rating"] = result["imdbRating"]
     if result["Ratings"] != []:
         try:
