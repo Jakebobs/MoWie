@@ -6,12 +6,15 @@
 
 .movie-hero {
     position: relative;
-    height: 60vh;
-    background-size: cover;
-    background-position: center;
+    height: 50vh;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #0a0a0a;
     display: flex;
     align-items: flex-end;
     padding: 2rem;
+    overflow: hidden;
 }
 
 .back-btn {
@@ -228,14 +231,4 @@
     .cast-section {
         overflow-x: auto;
     }
-}
-
-.description-section {
-    margin-bottom: 2rem;
-}
-
-.description-text {
-    line-height: 1.8;
-    color: #ccc;
-    font-size: 1.1rem;
 }
