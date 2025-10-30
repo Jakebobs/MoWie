@@ -84,9 +84,13 @@ export const HomePage = observer(function HomePage(props) {
 
 
     useEffect(() => {
-    if (props.model?.topics?.length > 0) {
-        loadRandomTopicsACB();
-    }
+        if (props.model?.topics?.length > 0) {
+            loadRandomTopicsACB();
+        }
+
+        return () => {
+            props.onSetQuery(''); 
+        };
     }, []);
 
     return (
