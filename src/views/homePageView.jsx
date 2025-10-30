@@ -134,6 +134,11 @@ export const HomePage = observer(function HomePage(props) {
                 >
                     Set the Mood
                 </div>
+                {(hasVibesSelected || hasGenresSelected || hasMoodSelected || (props.selectedTopics && props.selectedTopics.length > 0)) && (
+                    <div className="dropdown clear-all-dropdown" onClick={() => props.onClearAllFilters()}>
+                        Clear All Filters
+                    </div>
+                )}
             </div>
 
 
@@ -202,45 +207,12 @@ export const HomePage = observer(function HomePage(props) {
                         </div>
                     </>
                 ) : (
-                    <>
-                        <h2 className="trending-title">Currently trending</h2>
-                        <div className="movie-grid">
-                            {props.testMovies.map((movie, index) => (
-                                <div
-                                    key={movie.id}
-                                    className="movie-card"
-                                    style={{
-                                        backgroundImage: `url(${placeholderImage})`,
-                                    }}
-                                    onClick={() => {
-
-                                        const testMovie = {
-                                            name: movie.title,
-                                            year: movie.year,
-                                            genre: movie.genre,
-                                            imdb_rating: movie.imdb_rating,
-                                            rt_rating: movie.rt_rating,
-                                            imdb_id: movie.id
-                                        };
-                                        selectMovieACB(testMovie)
-                                    }}
-                                >
-                                    <div className="movie-rank">
-                                        {index + 1}
-                                    </div>
-                                    <div className="movie-overlay">
-                                        <h4 className="movie-title">{movie.title}</h4>
-                                        <div className="movie-details">
-                                            <span>{movie.year}</span>
-                                            <span>{movie.genre}</span>
-                                            <span>IMDB: {movie.imdb_rating}</span>
-                                            <span>RT: {movie.rt_rating}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                    <div className="tutorial-section">
+                        <h2 className="tutorial-title">How It Works</h2>
+                        <div className="tutorial-steps">     
+                                <p>Insert tutorial here</p>
                         </div>
-                    </>
+                    </div>
                 )}
             </div>
         </div>

@@ -84,6 +84,13 @@ const Home = observer(
     		props.model.addCustomVibe(vibe);
 		}
 
+		function clearAllFiltersACB() {
+			props.model.clearVibes();
+			props.model.clearGenres();
+			props.model.resetMood();
+			props.model.clearTopics();
+		}
+
 		return (
 			<div>
 				<HomePage 
@@ -112,7 +119,7 @@ const Home = observer(
 					onTopicToggle={topicToggleACB}
 					onMovieSelect={movieSelectACB}
 					onVibeAdd={vibeAddACB}
-					
+					onClearAllFilters={clearAllFiltersACB}
 				/>
 			</div>
 		)

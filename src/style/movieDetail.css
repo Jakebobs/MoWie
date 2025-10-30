@@ -229,3 +229,13 @@
         overflow-x: auto;
     }
 }
+
+.description-section {
+    margin-bottom: 2rem;
+}
+
+.description-text {
+    line-height: 1.8;
+    color: #ccc;
+    font-size: 1.1rem;
+}

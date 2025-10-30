@@ -44,13 +44,9 @@ export const MovieDetailView = observer(function MovieDetailView(props) {
             <div className="movie-info-container">
                 <div className="movie-meta-row">
                     <div className="meta-items">
-                        <span className="meta-item">{movie.genre}</span>
-                        {movie.genre && movie.genre.includes(',') ? 
-                            movie.genre.split(',').slice(1).map((g, i) => (
-                                <span key={i} className="meta-item">{g.trim()}</span>
-                            ))
-                            : null
-                        }
+                        {movie.genre && movie.genre.split(',').map((g, i) => (
+                            <span key={i} className="meta-item">{g.trim()}</span>
+                        ))}
                     </div>
                 </div>
 
@@ -60,16 +56,26 @@ export const MovieDetailView = observer(function MovieDetailView(props) {
                         IMDB <strong>{movie.imdb_rating}</strong>
                     </span>
                     <span className="detail-item rt-badge">
-                        RT <strong>{movie.rt_rating}%</strong>
+                        RT <strong>{movie.rt_rating}</strong>
                     </span>
                 </div>
+
+                {movie.description && (
+                    <div className="description-section">
+                        <p className="description-text">{movie.description}</p>
+                    </div>
+                )}
 
                 <div className="action-buttons">
                     <button className="action-btn primary" onClick={addToWatchlistACB}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M12 5v14M5 12h14"/>
+                            {props.isInWatchlist ? (
+                                <path d="M5 13l4 4L19 7"/>
+                            ) : (
+                                <path d="M12 5v14M5 12h14"/>
+                            )}
                         </svg>
-                        Add to Watchlist
+                        {props.isInWatchlist ? 'Added' : 'Add to Watchlist'}
                     </button>
                 </div>
 

@@ -17,7 +17,7 @@ export const movieModel = {
     testMovies: [
         { id: 1, title: "Dune: Part Two", year: 2024, genre: "Thriller", rt_rating: 5, imdb_rating: 10},
         { id: 2, title: "Oppenheimer", year: 2023, genre: "Thriller", rt_rating: 5, imdb_rating: 10},
-        { id: 3, title: "Barbie", year: 2023, genre: "Thriller", rt_rating: 5, imdb_rating: 10},
+        { id: 3, title: "Barbie", year: 2023, description: "Placeholder description", genre: "Thriller, Adventure", rt_rating: 5, imdb_rating: 10},
         { id: 4, title: "Joker: Folie à Deux", year: 2025, genre: "Thriller", rt_rating: 5, imdb_rating: 10},
     ],
 
@@ -151,6 +151,12 @@ export const movieModel = {
             this.watchlist.push(this.selectedMovie);
         }
     },
+
+    isInWatchlist() {
+        return this.watchlist.some(m => 
+            (m.name && m.name === this.selectedMovie.name)
+        );
+    },
     
 
     setQuery(query){
@@ -245,5 +251,9 @@ export const movieModel = {
             this.addedVibes.push(vibe);
         }
     },
+
+    clearTopics(){
+        this.selectedTopics = [];
+    }
 
 }
