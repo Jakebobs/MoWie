@@ -116,69 +116,7 @@
     margin-left: 0.25rem;
 }
 
-.cast-section {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
 
-.cast-member {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.cast-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.cast-name {
-    font-size: 0.9rem;
-    color: #ccc;
-}
-
-.plot-section {
-    margin-bottom: 2rem;
-}
-
-.plot-text {
-    line-height: 1.8;
-    color: #ccc;
-    font-size: 1rem;
-}
-
-.director-section {
-    margin-bottom: 2rem;
-}
-
-.director-section h3 {
-    font-size: 1rem;
-    color: #ccc;
-    margin-bottom: 1rem;
-    font-weight: 400;
-}
-
-.director-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.director-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.director-name {
-    font-size: 1rem;
-    color: #fff;
-}
 
 .action-buttons {
     display: flex;
@@ -220,6 +158,16 @@
 
 .imdb-link:hover {
     transform: translateX(5px);
+}
+
+.description-section {
+    margin-bottom: 3rem;
+}
+
+.description-text {
+    line-height: 1.8;
+    color: #ccc;
+    font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
