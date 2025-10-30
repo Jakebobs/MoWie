@@ -86,7 +86,7 @@ def parse(userprompt, extraUserInput: dict = None):
 
     return (
         userprompt
-        + f"{'Also, ' if userprompt != '' else ''}{topicSubStr}{vibesSubStr}{genresSubStr}{moodSubStr}{energyAttentionSubStr}"
+        + f"{' Also, ' if userprompt != '' else ''}{topicSubStr}{vibesSubStr}{genresSubStr}{moodSubStr}{energyAttentionSubStr}"
     )
 
 
