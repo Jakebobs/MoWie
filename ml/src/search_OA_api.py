@@ -78,9 +78,15 @@ def parse(userprompt, extraUserInput: dict = None):
         else ""
     )
 
+    energyAttentionSubStr = (
+        f"Additionally, {extraUserInput['energyLevel']} And {extraUserInput['attentionLevel']}"
+        if extraUserInput["hasSetLevels"]
+        else ""
+    )
+
     return (
         userprompt
-        + f"{'Also, ' if userprompt != '' else ''}{topicSubStr}{vibesSubStr}{genresSubStr}{moodSubStr}Additionally, {extraUserInput['energyLevel']} And {extraUserInput['attentionLevel']}"
+        + f"{'Also, ' if userprompt != '' else ''}{topicSubStr}{vibesSubStr}{genresSubStr}{moodSubStr}{energyAttentionSubStr}"
     )
 
 

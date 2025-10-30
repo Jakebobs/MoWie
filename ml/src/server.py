@@ -34,8 +34,7 @@ def query_n_best_matches():
     data = request.json
     print(f"DEBUG: type of data: {type(data)}, data: {data}")
     text = data.get("text", "")  # här ligger användarens query
-    hasSetLevels = data["hasSetLevels"]
-    extra_user_input = interpret_extra_user_input(data) if hasSetLevels else None
+    extra_user_input = interpret_extra_user_input(data)  # if hasSetLevels else None
     match ML_BACKEND:
         case "QWEN_EMBED":
             result = find_n_best_matches(N, [text, ""], database, model)[0]
@@ -54,30 +53,32 @@ def query_n_best_matches():
 
 
 def interpret_extra_user_input(user_input: dict[str, Any]) -> dict[str, Any]:
-    assert user_input["hasSetLevels"]
+    hasSetLevels = user_input["hasSetLevels"]
 
     interpreted_input = dict()
     interpreted_input["selectedTopics"] = user_input["selectedTopics"]
     interpreted_input["selectedVibes"] = user_input["selectedVibes"]
     interpreted_input["selectedGenres"] = user_input["selectedGenres"]
     interpreted_input["selectedMoods"] = user_input["selectedMoods"]
-    if user_input["energyLevel"] >= 75:
-        interpreted_input["energyLevel"] = c.VERY_HIGH_ENERGY
-    elif user_input["energyLevel"] >= 50:
-        interpreted_input["energyLevel"] = c.HIGH_ENERGY
-    elif user_input["energyLevel"] >= 25:
-        interpreted_input["energyLevel"] = c.LOW_ENERGY
-    else:
-        interpreted_input["energyLevel"] = c.VERY_LOW_ENERGY
+    interpreted_input["hasSetLevels"] = hasSetLevels
+    if hasSetLevels:
+        if user_input["energyLevel"] >= 75:
+            interpreted_input["energyLevel"] = c.VERY_HIGH_ENERGY
+        elif user_input["energyLevel"] >= 50:
+            interpreted_input["energyLevel"] = c.HIGH_ENERGY
+        elif user_input["energyLevel"] >= 25:
+            interpreted_input["energyLevel"] = c.LOW_ENERGY
+        else:
+            interpreted_input["energyLevel"] = c.VERY_LOW_ENERGY
 
-    if user_input["attentionLevel"] >= 75:
-        interpreted_input["attentionLevel"] = c.VERY_HIGH_ATTENTION
-    elif user_input["attentionLevel"] >= 50:
-        interpreted_input["attentionLevel"] = c.HIGH_ATTENTION
-    elif user_input["attentionLevel"] >= 25:
-        interpreted_input["attentionLevel"] = c.LOW_ATTENTION
-    else:
-        interpreted_input["attentionLevel"] = c.VERY_LOW_ATTENTION
+        if user_input["attentionLevel"] >= 75:
+            interpreted_input["attentionLevel"] = c.VERY_HIGH_ATTENTION
+        elif user_input["attentionLevel"] >= 50:
+            interpreted_input["attentionLevel"] = c.HIGH_ATTENTION
+        elif user_input["attentionLevel"] >= 25:
+            interpreted_input["attentionLevel"] = c.LOW_ATTENTION
+        else:
+            interpreted_input["attentionLevel"] = c.VERY_LOW_ATTENTION
 
     return interpreted_input
 
