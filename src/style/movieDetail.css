@@ -1,0 +1,182 @@
+.movie-detail-wrapper {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.movie-hero {
+    position: relative;
+    height: 50vh;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #0a0a0a;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.back-btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-5px);
+}
+
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.movie-title-hero {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 0.5rem;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.movie-info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.movie-meta-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.meta-items {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.movie-details-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.imdb-badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+.imdb-badge strong {
+    color: #f5c518;
+    margin-left: 0.25rem;
+}
+
+.rt-badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+.rt-badge strong {
+    color: #fa320a;
+    margin-left: 0.25rem;
+}
+
+
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-btn.primary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.action-btn.primary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.imdb-link {
+    display: inline-block;
+    color: #f5c518;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.imdb-link:hover {
+    transform: translateX(5px);
+}
+
+.description-section {
+    margin-bottom: 3rem;
+}
+
+.description-text {
+    line-height: 1.8;
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .movie-title-hero {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .cast-section {
+        overflow-x: auto;
+    }
+}

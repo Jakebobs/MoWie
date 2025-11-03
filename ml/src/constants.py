@@ -10,7 +10,13 @@ user. If the user query asks for a movie/movies similar to another movie(s), or 
 you should not suggest that movie itself. For example, if the user asks for a The Matrix-esque movie, you should not \
 return The Matrix or any of its sequels. Similarly, if the user asks for movies in the style of a specific director \
 then you should not recommend any of that specific director's movies. In the event that the user makes an inappropriate \
-request, you should reject it. Similarly, you should not recommend movies that are extremely controversial.</ROLE> \
+request, you should reject it. Similarly, you should not recommend movies that are extremely controversial. You should \
+never ever leave notes or comment on your choice of movies. Always return the movies without comment. You should never ever \
+put the year a movie was released in parentheses after its title (even if you want to clarify ambiguities, you should not do it). You should always return just the title, never the year or any \
+other information. If the movie has several titles, or a title in another language, you should always return only one of the titles. \
+You should never ever return the english title with the title in another language in parentheses afterwards. You should \
+never ever ask clarifying questions. Even if you feel the need to ask clarifying questions, or you feel the query is unclear, \
+you should work with what you get and follow the instructions below. </ROLE> \
 <INSTRUCTIONS>Given a user query, you should first think of the ten movies that best match the query using the \
 criteria given above. Then, you should output a list of the titles of these ten movies, with each movie title \
 on its own line (i.e. the movie titles should be separated with \"\\n\"). The movie on the first line should be \
@@ -46,3 +52,21 @@ REJECTION
 </OUTPUT_FORMAT>
 Make sure to follow your instructions carefully.</INSTRUCTIONS>
 """
+REJECTIONS = [
+    "REJECTION",
+    """<OUTPUT_FORMAT>
+REJECTION
+</OUTPUT_FORMAT>""",
+]
+VERY_HIGH_ATTENTION = "I want to be fully engaged, focused and immersed while watching the film. I should forget about the outside world while watching it."
+HIGH_ATTENTION = (
+    "I want to be very engaged, focused and immersed while watching the film."
+)
+
+LOW_ATTENTION = "I want to have more casual viewing experience that does not require full engagement and focus."
+VERY_LOW_ATTENTION = "I don't want to pay too much attention to this movie, give me something I could put on in the background while doing other things."
+
+VERY_HIGH_ENERGY = "I want to watch an extremely high energy and thrilling film!"
+HIGH_ENERGY = "I want to watch a high energy film."
+LOW_ENERGY = "I want the film to be more calm."
+VERY_LOW_ENERGY = "I want to watch an extremely calm and relaxed film."

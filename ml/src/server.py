@@ -5,8 +5,9 @@ from sentence_transformers import SentenceTransformer
 import constants as c
 from search import find_best_matches, find_n_best_matches
 import utils as u
-from typing import Literal
+from typing import Literal, Any
 from search_OA_api import movieSuggestion
+import omdb_api as o
 
 app = Flask(__name__)
 CORS(app)  # Allow requests from React
@@ -31,7 +32,9 @@ def query_best_match():
 @app.route("/api/query_n_best_matches", methods=["POST"])
 def query_n_best_matches():
     data = request.json
+    print(f"DEBUG: type of data: {type(data)}, data: {data}")
     text = data.get("text", "")  # här ligger användarens query
+    extra_user_input = interpret_extra_user_input(data)  # if hasSetLevels else None
     match ML_BACKEND:
         case "QWEN_EMBED":
             result = find_n_best_matches(N, [text, ""], database, model)[0]
@@ -42,10 +45,42 @@ def query_n_best_matches():
                 ]
             )
         case "OAI":
-            result = movieSuggestion(text, c.LLM_SYSTEM_PROMPT).split("\n")
-            return jsonify(
-                [{"name": match, "year": 0, "imdb_id": 0} for match in result]
-            )
+            result = movieSuggestion(
+                text, c.LLM_SYSTEM_PROMPT, extra_user_input=extra_user_input
+            ).split("\n")
+            full_results = o.get_info(result)
+            return jsonify(full_results)
+
+
+def interpret_extra_user_input(user_input: dict[str, Any]) -> dict[str, Any]:
+    hasSetLevels = user_input["hasSetLevels"]
+
+    interpreted_input = dict()
+    interpreted_input["selectedTopics"] = user_input["selectedTopics"]
+    interpreted_input["selectedVibes"] = user_input["selectedVibes"]
+    interpreted_input["selectedGenres"] = user_input["selectedGenres"]
+    interpreted_input["selectedMoods"] = user_input["selectedMoods"]
+    interpreted_input["hasSetLevels"] = hasSetLevels
+    if hasSetLevels:
+        if user_input["energyLevel"] >= 75:
+            interpreted_input["energyLevel"] = c.VERY_HIGH_ENERGY
+        elif user_input["energyLevel"] >= 50:
+            interpreted_input["energyLevel"] = c.HIGH_ENERGY
+        elif user_input["energyLevel"] >= 25:
+            interpreted_input["energyLevel"] = c.LOW_ENERGY
+        else:
+            interpreted_input["energyLevel"] = c.VERY_LOW_ENERGY
+
+        if user_input["attentionLevel"] >= 75:
+            interpreted_input["attentionLevel"] = c.VERY_HIGH_ATTENTION
+        elif user_input["attentionLevel"] >= 50:
+            interpreted_input["attentionLevel"] = c.HIGH_ATTENTION
+        elif user_input["attentionLevel"] >= 25:
+            interpreted_input["attentionLevel"] = c.LOW_ATTENTION
+        else:
+            interpreted_input["attentionLevel"] = c.VERY_LOW_ATTENTION
+
+    return interpreted_input
 
 
 if __name__ == "__main__":
