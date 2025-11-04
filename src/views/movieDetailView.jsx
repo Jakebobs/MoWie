@@ -1,6 +1,8 @@
 import { observer } from "mobx-react-lite";
 import "/src/style/movieDetail.css";
 import placeholderImage from '../../assets/placeholder.png';
+import imdbLogo from '../../assets/IMDB.png';
+import rtLogo from '../../assets/RT.png';
 
 export const MovieDetailView = observer(function MovieDetailView(props) {
     const movie = props.selectedMovie;
@@ -53,11 +55,13 @@ export const MovieDetailView = observer(function MovieDetailView(props) {
                 <div className="movie-details-row">
                     <span className="detail-item">{movie.year}</span>
                     <span className="detail-item imdb-badge">
-                        IMDB <strong>{movie.imdb_rating}</strong>
+                        <img src={imdbLogo} alt="IMDB" className="rating-logo-detail" />
+                        <strong>{movie.imdb_rating}</strong>
                     </span>
                     <span className="detail-item rt-badge">
-                        RT <strong>{movie.rt_rating}</strong>
-                    </span>
+                        <img src={rtLogo} alt="Rotten Tomatoes" className="rating-logo-detail" />
+                        <strong>{movie.rt_rating}</strong>
+                     </span>
                 </div>
 
                 {movie.description && (

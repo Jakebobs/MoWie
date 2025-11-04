@@ -11,7 +11,6 @@ body {
     min-height: 100vh;
 }
 
-/* Wrapper for movie finder content only */
 .movie-finder-wrapper {
     display: flex;
     flex-direction: column;
@@ -269,6 +268,16 @@ h1 {
     margin-bottom: 3rem;
 }
 
+.movie-details .rating-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
 
+.movie-details .rating-logo {
+    height: 14px;
+    width: auto;
+    object-fit: contain;
+}
 
 

@@ -94,26 +94,28 @@
     gap: 0.5rem;
 }
 
-.imdb-badge {
+.imdb-badge,
+.rt-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
+}
+
+.rating-logo-detail {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
 }
 
 .imdb-badge strong {
     color: #f5c518;
-    margin-left: 0.25rem;
-}
-
-.rt-badge {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
 }
 
 .rt-badge strong {
     color: #fa320a;
-    margin-left: 0.25rem;
 }
 
 

@@ -7,6 +7,8 @@ import { GenreModal } from "../components/genreModal.jsx";
 import { MoodModal } from "../components/moodModal.jsx";
 import placeholderImage from '../../assets/placeholder.png';
 import loadingGif from '../../assets/Loading.gif';
+import imdbLogo from '../../assets/IMDB.png';
+import rtLogo from '../../assets/RT.png';
 
 export const HomePage = observer(function HomePage(props) {
     const [activeModal, setActiveModal] = useState(null);
@@ -202,8 +204,14 @@ export const HomePage = observer(function HomePage(props) {
                                         <div className="movie-details">
                                             <span>{movie.year}</span>
                                             <span>{movie.genre}</span>
-                                            <span>IMDB: {movie.imdb_rating}</span>
-                                            <span>RT: {movie.rt_rating}</span>
+                                            <span className="rating-badge">
+                                                <img src={imdbLogo} alt="IMDB" className="rating-logo" />
+                                                  {movie.imdb_rating}
+                                            </span>
+                                            <span className="rating-badge">
+                                                <img src={rtLogo} alt="Rotten Tomatoes" className="rating-logo" />
+                                                {movie.rt_rating}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
