@@ -214,7 +214,9 @@ export const HomePage = observer(function HomePage(props) {
                     <div className="tutorial-section">
                         <h2 className="tutorial-title">How It Works</h2>
                         <div className="tutorial-steps">     
-                                <p>Insert tutorial here</p>
+                                <p>Start by describing what kind of movie you want to watch in the search box.</p>
+                                <p>You can also click any of the suggestions or use the Vibe, Genre, or Set the Mood options.</p>
+                                <p>When you're ready, hit search and wait for the Wizard to work its magic!</p>
                         </div>
                     </div>
                 )}
