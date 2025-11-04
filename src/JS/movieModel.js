@@ -170,6 +170,7 @@ export const movieModel = {
     setRandomTopics(){
         const shuffled = [...this.topics].sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, 6);
+        // const selected = ["", "", ""];
         this.randomTopics = selected;
     },
 

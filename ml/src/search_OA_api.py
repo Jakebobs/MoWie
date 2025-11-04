@@ -18,7 +18,7 @@ def validate_oa_response(response: str) -> bool:
 
 
 def movieSuggestion(
-    userPrompt, systemPrompt, model="gpt-5-nano", extra_user_input: dict = None
+    userPrompt, systemPrompt, model="gpt-5-mini", extra_user_input: dict = None
 ):
     print(f"DEBUG: model is {model}")
     prompt = parse(userPrompt, extra_user_input)
@@ -86,7 +86,7 @@ def parse(userprompt, extraUserInput: dict = None):
 
     return (
         userprompt
-        + f"{' Also, ' if userprompt != '' else ''}{topicSubStr}{vibesSubStr}{genresSubStr}{moodSubStr}{energyAttentionSubStr}"
+        + f"{' Also, ' if userprompt != '' and (topicSubStr != '' or vibesSubStr != '' or genresSubStr != '' or moodSubStr != '' or energyAttentionSubStr != '') else ''}{topicSubStr}{vibesSubStr}{genresSubStr}{moodSubStr}{energyAttentionSubStr}"
     )
 
 
