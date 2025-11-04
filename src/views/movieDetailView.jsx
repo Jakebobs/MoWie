@@ -95,7 +95,9 @@ export const MovieDetailView = observer(function MovieDetailView(props) {
                                 View on IMDB
                             </a>
                         )}
-                        
+                    </div>
+                    
+                    <div className="streaming-buttons">
                         <button className="streaming-btn netflix-btn">
                             Watch on Netflix
                         </button>
@@ -104,7 +106,6 @@ export const MovieDetailView = observer(function MovieDetailView(props) {
                             Watch on HBO Max
                         </button>
                     </div>
-        
                 </div>
             </div>
         </div>
