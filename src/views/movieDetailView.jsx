@@ -79,16 +79,29 @@ export const MovieDetailView = observer(function MovieDetailView(props) {
                     </button>
                 </div>
 
-                {movie.imdb_id && (
-                    <a 
-                        href={`https://www.imdb.com/title/${movie.imdb_id}/`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="imdb-link"
-                    >
-                        View on IMDB →
-                    </a>
-                )}
+                <div className="external-links-section">
+                    <div className="streaming-buttons">
+                        {movie.imdb_id && (
+                            <a 
+                                href={`https://www.imdb.com/title/${movie.imdb_id}/`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="streaming-btn imdb-btn"
+                            >
+                                View on IMDB
+                            </a>
+                        )}
+                        
+                        <button className="streaming-btn netflix-btn">
+                            Watch on Netflix
+                        </button>
+                        
+                        <button className="streaming-btn hbo-btn">
+                            Watch on HBO Max
+                        </button>
+                    </div>
+        
+                </div>
             </div>
         </div>
     );
