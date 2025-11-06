@@ -19,24 +19,24 @@ export function AboutUsView() {
           <h2 className="subtitle">Group Members</h2>
           <div className="profiles">
             <div className="profile">
-              <img src={jakob} width="120" />
               <p>Jakob</p>
+              <p>jakstrom@kth.se</p>
             </div>
             <div className="profile">
-              <img src={nils} width="120" />
               <p>Nils</p>
+              <p>nilsww@kth.se</p>
             </div>
             <div className="profile">
-              <img src={fanny} width="120" />
               <p>Fanny</p>
+              <p>fawe@kth.se</p>
             </div>
             <div className="profile">
-              <img src={joel} width="120" />
               <p>Joel</p>
+              <p>juddin@kth.se</p>
             </div>
             <div className="profile">
-              <img src={stella} width="120" />
               <p>Stella</p>
+              <p>stehuy@kth.se</p>
             </div>
           </div>
         </center>

@@ -92,6 +92,7 @@ export const HomePage = observer(function HomePage(props) {
 
         return () => {
             props.onSetQuery(''); 
+            props.onClearTopics();
         };
     }, []);
 

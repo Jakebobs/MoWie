@@ -4,6 +4,7 @@ import { FaInfo } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUserCircle } from "react-icons/fa";
+import MoWieLogo from '../../assets/MoWieIcon.png';
 import "/src/style/navbar.css";
 
 export function Navbar(props) {
@@ -16,7 +17,7 @@ export function Navbar(props) {
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <a href="#" className="logo"> <img src="assets\MoWieIcon.png" width="50"></img> MoWie</a>
+                <a href="#" className="logo"> <img src={MoWieLogo} width="50"></img> MoWie</a>
             </div>
             <div className="navbar-right">
                 {/* Hamburger menu */}
