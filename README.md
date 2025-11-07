@@ -32,7 +32,7 @@ You can also access it at https://mowie-0.web.app/
 ## Project Structure
 ```
 mowie/
-├── assets/                  #use 
+├── assets/                  #images and gifs 
 ├── ml/
 │   ├── data/moviesum/      #Embeddings for first draft of search function 
 │   ├── src/                #All files for the ml-backend
